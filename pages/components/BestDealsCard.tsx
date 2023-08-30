@@ -29,7 +29,7 @@ export default function BestDealsCard(props: any) {
         {star_count > 0 ? starComponents.map((star) => star) : <p>No Rating</p>}
         <p className="text-sm">{`(${props.rating_count})`}</p>
       </div>
-      <Link className="mt-auto text-sm hover:bg-blue-500 hover:text-white mb-5 w-32 text-center rounded-full px-5 py-3 border border-black" href="/">Add to Cart</Link>
+      <Link className="mt-auto text-sm hover:bg-black hover:text-white mb-5 w-32 text-center rounded-full px-5 py-3 border border-black" href="/">Add to Cart</Link>
     </div>
   );
 }
