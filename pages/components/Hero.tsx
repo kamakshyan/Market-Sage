@@ -14,7 +14,7 @@ export default function Hero() {
     <div className="relative h-[90vh] overflow-hidden">
       <Image className="object-cover" alt="Shirts Hanging on a Rack" src={shirts} />
       <div className="flex flex-col items-center gap-y-7 absolute  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <span className={`${work_sans.className} uppercase text-center text-7xl`}>'23 Collection</span>
+        <span className={`${work_sans.className} uppercase text-center text-7xl`}>&apos;23 Collection</span>
         <Link className="group flex items-center gap-x-4 border border-slate-600 backdrop-blur-sm py-4 px-10 text-2xl" href={"/collection"}>
             Checkout Now
             <BsArrowRight className="group-hover:translate-x-2 transition-all duration-500"/>
