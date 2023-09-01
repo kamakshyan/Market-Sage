@@ -67,9 +67,9 @@ function getTimeLeft() {
         
         <div className="p-10">
       <h1 className="text-3xl font-semibold">Todays Best Deals!</h1>
-      <p className="text-center md:text-left text-md text-red-500 ml-1 mt-1">
+      {/* <p className="text-center md:text-left text-md text-red-500 ml-1 mt-1">
         Time left: {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
-      </p>
+      </p> */}
       <div className="mt-10">
       <div className="flex flex-col gap-y-10 md:flex-row md:overflow-x-scroll gap-x-10">
         {
