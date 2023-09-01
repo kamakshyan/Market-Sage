@@ -11,6 +11,7 @@ const poppins = Poppins({
   weight: ["100", "200", "300", "500", "600", "400", "700", "800", "900"],
 });
 
+// Fetching Products from FakeStoreAPI
 export const getServerSideProps = async () => {
   const res = await fetch("https://fakestoreapi.com/products?limit=10", {
     method: "GET",
@@ -25,8 +26,6 @@ export const getServerSideProps = async () => {
     props: { data: data },
   };
 };
-
-
 
 export default function Home(props: any) {
   // Best Deals Time getter
@@ -68,11 +67,11 @@ function getTimeLeft() {
         
         <div className="p-10">
       <h1 className="text-3xl font-semibold">Todays Best Deals!</h1>
-      {/* <p className="text-sm text-red-500 ml-1 mt-1">
+      <p className="text-center md:text-left text-md text-red-500 ml-1 mt-1">
         Time left: {timeLeft.hours}:{timeLeft.minutes}:{timeLeft.seconds}
-      </p> */}
+      </p>
       <div className="mt-10">
-      <div className="flex overflow-x-scroll gap-x-10">
+      <div className="flex flex-col gap-y-10 md:flex-row md:overflow-x-scroll gap-x-10">
         {
           props.data.map((product:any, index:any) =>{
             return (

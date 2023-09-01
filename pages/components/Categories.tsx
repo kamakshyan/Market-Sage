@@ -37,7 +37,7 @@ export default function Categories() {
   return (
     <div className="p-10">
       <h1 className="text-3xl font-semibold">Shop Our Top Categories</h1>
-      <div className="grid grid-cols-4 gap-x-7 mt-10">
+      <div className="grid gap-y-10 md:grid-cols-4 gap-x-7 mt-10">
         {
             categories.map((category:any,index) =>{
                 return (

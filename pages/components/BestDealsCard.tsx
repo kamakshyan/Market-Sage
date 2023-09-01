@@ -8,7 +8,7 @@ export default function BestDealsCard(props: any) {
     <AiFillStar className="text-yellow-400 text-lg" key={index} />
   ));
   return (
-    <div className="hover:cursor-pointer group flex flex-col min-h-[250px] min-w-[400px] mb-5">
+    <div className="hover:cursor-pointer group flex flex-col min-h-[250px] md:min-w-[400px] mb-5">
       <div className=" bg-gray-100 rounded-xl p-10">
         <Image
           className="group-hover:scale-110 transition-all duration-300 mx-auto object-contain mix-blend-multiply h-[250px] w-[250px]"
