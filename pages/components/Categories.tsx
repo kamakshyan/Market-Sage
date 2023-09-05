@@ -42,7 +42,7 @@ export default function Categories() {
             categories.map((category:any,index) =>{
                 return (
                     <div key={index} className="group hover:shadow-md transition-all duration-700 rounded-xl overflow-hidden relative cursor-pointer flex flex-col items-center justify-center">
-                        <Image className="md:group-hover:scale-125 transition-all duration-700 w-[350px] h-[250px] object-cover" alt={category.name} src={category.image} />
+                        <Image className="md:group-hover:scale-125 transition-all duration-700 w-[350px] h-[250px] object-cover lg:w-[500px]" alt={category.name} src={category.image} />
                         <div className="absolute flex md:hidden md:group-hover:flex items-center justify-center h-full w-full backdrop-blur-sm text-xl font-semibold">
                             <h1 className="drop-shadow-xl text-3xl text-white">{category.name}</h1>
                         </div>
