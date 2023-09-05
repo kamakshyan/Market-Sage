@@ -5,7 +5,6 @@ import Categories from "./components/Categories";
 import BestDeals from "./components/BestDealsCard";
 import { useEffect, useState } from "react";
 import BestDealsCard from "./components/BestDealsCard";
-import DiscountBanner from "./components/DiscountBanner";
 
 const poppins = Poppins({
   subsets: ["latin"],
