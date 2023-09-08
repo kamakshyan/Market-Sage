@@ -59,7 +59,7 @@ export default function dashboard() {
   return (
     <div className={`${poppins.className}`}>
       <Navbar />
-      <div className="flex">
+      <div className="flex pt-20">
         <div className="hidden md:flex flex-col bg-gray-50 border-r border-slate-400 py-10 pl-5 pr-10 justify-between min-h-screen">
           <div className=" ">
             {dashboard_links.map((link: any, index: any) => {

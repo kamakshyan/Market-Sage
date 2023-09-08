@@ -60,8 +60,10 @@ export default function Home(props: any) {
   // Best Deals Time getter Ends
   return (
     <>
-      <div className={`${poppins.className} scrollbar` }>
+      <div className={`${poppins.className}`}>
         <Navbar />
+
+        <div className="pt-20">
         <Hero />
         <Categories />
 
@@ -87,6 +89,7 @@ export default function Home(props: any) {
               })}
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
