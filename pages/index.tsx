@@ -20,7 +20,7 @@ export const getServerSideProps = async () => {
     },
   });
   const data = await res.json();
-  console.log("Products: ", data);
+  // console.log("Products: ", data);
 
   return {
     props: { data: data },
@@ -60,7 +60,7 @@ export default function Home(props: any) {
   // Best Deals Time getter Ends
   return (
     <>
-      <div className={poppins.className}>
+      <div className={`${poppins.className} scrollbar` }>
         <Navbar />
         <Hero />
         <Categories />

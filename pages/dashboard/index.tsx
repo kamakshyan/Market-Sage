@@ -8,9 +8,9 @@ import {
 } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs";
 import Link from "next/link";
-import LineChart from "./components/Dashboard/LineChart";
-import PieChart from "./components/Dashboard/PieChart";
-import Navbar from "./components/Navbar";
+import LineChart from ".././components/Dashboard/LineChart";
+import PieChart from ".././components/Dashboard/PieChart";
+import Navbar from ".././components/Navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,31 +23,37 @@ export default function dashboard() {
       name: "Dashboard",
       icon: <BiSolidBarChartSquare />,
       link: "/dashboard",
+      active: true,
     },
     {
       name: "Products",
       icon: <BiSolidPackage />,
       link: "/dashboard/products",
+      active: false,
     },
     {
       name: "Orders",
       icon: <BiSolidTruck />,
       link: "/dashboard/orders",
+      active:false,
     },
     {
       name: "Customers",
       icon: <BsFillPersonFill />,
       link: "/dashboard/customers",
+      active:false,
     },
     {
       name: "Chatbot",
       icon: <AiFillRobot />,
       link: "/dashboard/chatbot",
+      active:false,
     },
     {
       name: "Settings",
       icon: <BiSolidCog />,
       link: "/dashboard/settings",
+      active:false,
     },
   ];
   return (
@@ -61,7 +67,7 @@ export default function dashboard() {
                 <Link
                   href={link.link}
                   key={index}
-                  className="flex flex-col my-2 rounded-xl py-3 px-5 transition-all hover:bg-black hover:text-white gap"
+                  className={link.active ? `flex flex-col my-2 rounded-xl py-3 px-5 transition-all bg-black text-white` : `flex flex-col my-2 rounded-xl py-3 px-5 transition-all hover:bg-black hover:text-white`}
                 >
                   <div className="flex items-center gap-x-2">
                     <span>{link.icon}</span>
@@ -71,17 +77,7 @@ export default function dashboard() {
               );
             })}
           </div>
-          {/* <Link
-            href={"/"}
-            className="flex flex-col mb-10 my-2 rounded-xl py-3 px-5 transition-all bg-black text-white gap"
-          >
-            <div className="flex items-center gap-x-2">
-              <span>
-                <IoExitOutline />
-              </span>
-              <span>Home</span>
-            </div>
-          </Link> */}
+          
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-screen p-4 md:p-14">
@@ -91,9 +87,9 @@ export default function dashboard() {
             <span className="text-sm text-green-500">+10% since last week</span>
           </div>
           <div className="max-h-[45vh] flex flex-col gap-y-3 justify-start items-center p-10 hover:shadow-lg transition-all duration-300 border border-slate-200 rounded-lg">
-            <span className="text-xl">Product Sales</span>
-            <span className="text-5xl font-bold ">10,000</span>
-            <span className="text-sm text-green-500">+10% since last week</span>
+            <span className="text-xl">Product Reviews</span>
+            <span className="text-5xl font-bold ">4.5/5</span>
+            <span className="text-sm text-red-500">-10% since last week</span>
           </div>
           <LineChart />
           <PieChart />
