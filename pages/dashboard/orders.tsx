@@ -208,7 +208,7 @@ export default function orders() {
         </div>
         <div className="flex w-full">
           <Table className="">
-            <TableCaption>You've reached end of the table 😕</TableCaption>
+            <TableCaption>You&apos;ve reached end of the table 😕</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className="">Invoice</TableHead>
