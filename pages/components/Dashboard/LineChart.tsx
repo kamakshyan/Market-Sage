@@ -25,12 +25,17 @@ import {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'bottom' as const,
+        labels:{
+          usePointStyle: true,
+          pointStyle: 'circle',
+          padding:10,
+      }
       },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
+      // title: {
+      //   display: true,
+      //   text: 'Chart.js Line Chart',
+      // },
     },
   };
   
@@ -56,7 +61,7 @@ import {
 
 export default function LineChart() {
     return (
-        <div>
+        <div className='max-h-[45vh] flex items-center justify-center p-10 hover:shadow-lg transition-all duration-300 border border-slate-200 rounded-lg'>
             <Line options={options} data={data} />
         </div>
     )

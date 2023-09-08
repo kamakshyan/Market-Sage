@@ -14,8 +14,8 @@ export default function Hero() {
     <div className="relative md:h-[90vh] overflow-hidden">
       <Image className="object-cover" alt="Shirts Hanging on a Rack" src={shirts} />
       <div className="flex flex-col items-center gap-y-7 absolute  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <span className={`${work_sans.className} drop-shadow-lg font-semibold uppercase text-center text-5xl md:text-7xl`}>&apos;23 Collection</span>
-        <Link className="group flex items-center gap-x-4 py-3 px-5 text-xl border-none shadow-lg rounded-full bg-white md:bg-none md:py-4 md:px-10 md:text-2xl" href={"/collection"}>
+        <span className={`${work_sans.className} text-slate-800  drop-shadow-md font-semibold uppercase text-center text-5xl md:text-7xl`}>&apos;23 Collection</span>
+        <Link className="group flex items-center gap-x-4 py-4 px-7 text-xl border-none shadow-lg bg-white md:bg-none md:py-4 md:px-10 md:text-2xl" href={"/collection"}>
             Checkout Now
             <BsArrowRight className="group-hover:translate-x-2 transition-all duration-500"/>
             </Link>
