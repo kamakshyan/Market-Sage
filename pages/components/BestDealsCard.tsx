@@ -1,16 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AiFillStar } from "react-icons/ai";
+import useNextBlurhash from "use-next-blurhash";
 
 export default function BestDealsCard(props: any) {
   const star_count = Math.floor(props.rating);
   const starComponents = Array.from({ length: star_count }, (_, index) => (
     <AiFillStar className="text-yellow-400 text-lg" key={index} />
   ));
+  const [blurDataUrl] = useNextBlurhash("LEHV6nWB2yk8pyo0adR*.7kCMdnj");
   return (
     <div className="hover:cursor-pointer group flex flex-col min-h-[250px] md:min-w-[400px] mb-5">
       <div className=" bg-gray-100 rounded-xl p-10">
         <Image
+        placeholder="blur"
+        blurDataURL={blurDataUrl}
           className="group-hover:scale-110 transition-all duration-300 mx-auto object-contain mix-blend-multiply h-[250px] w-[250px]"
           height={250}
           width={350}

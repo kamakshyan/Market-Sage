@@ -14,6 +14,7 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
+    "blurhash": "^2.0.5",
     "chart.js": "^4.4.0",
     "clsx": "^2.0.0",
     "eslint": "8.48.0",
@@ -26,7 +27,8 @@
     "react-icons": "^4.10.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "use-next-blurhash": "^1.0.5"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",

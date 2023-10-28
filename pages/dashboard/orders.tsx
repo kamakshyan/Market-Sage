@@ -185,7 +185,7 @@ export default function orders() {
       <Navbar />
       <div className="flex pt-[85px]">
         <div className="hidden md:flex flex-col bg-gray-50 border-r border-slate-400 py-10 pl-5 pr-10 justify-between min-h-screen">
-          <div className=" ">
+          <div className="sticky top-32 ">
             {dashboard_links.map((link: any, index: any) => {
               return (
                 <Link
