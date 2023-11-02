@@ -10,7 +10,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-export default function Navbar() {
+
+export default function Navbar(props:any) {
   const navlinks = [
     {
       title: "Trending",
