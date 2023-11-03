@@ -86,7 +86,7 @@ const Upload: NextPage<Props> = ({ dirs }) => {
             )}
           </div>
         </label>
-        <div className="flex flex-col gap-y-6 w-5/6 md:w-1/3 md:mx-auto">
+        <div className="flex mt-7 md:mt-0 flex-col gap-y-6 w-5/6 md:w-1/3 md:mx-auto">
           <div className="flex flex-col gap-y-1">
             <label className="">Select Model:</label>
             <select

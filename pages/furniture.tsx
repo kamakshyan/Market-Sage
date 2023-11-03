@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
   };
 
 export default function furniture(props:any) {
-    console.log(props.data)
+    // console.log(props.data)
   return (
     <div className={`${poppins.className}`}>
       <Navbar />

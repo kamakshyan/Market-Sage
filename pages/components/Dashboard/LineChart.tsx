@@ -61,7 +61,7 @@ import {
 
 export default function LineChart() {
     return (
-        <div className='max-h-[45vh] flex items-center justify-center p-10 hover:shadow-lg transition-all duration-300 border border-slate-200 rounded-lg'>
+        <div className='min-h-[70vh] max-h-[90vh] flex items-center justify-center p-10 transition-all duration-300'>
             <Line options={options} data={data} />
         </div>
     )

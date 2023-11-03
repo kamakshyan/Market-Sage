@@ -12,14 +12,18 @@ export const options = {
                 pointStyle: 'circle',
                 padding:5,
             }
-        }
+        },
+        title: {
+          display: true,
+          text: 'Category wise Sales (in units)',
+        },
     }
 }
 export const data = {
     
     datasets: [
       {
-        label: 'Product wise Sales',
+        label: 'Product wise Sales (in units)',
         data: [12, 19, 3, 5],
         backgroundColor: [
           '#a8c8e5',
@@ -30,12 +34,12 @@ export const data = {
         borderWidth: 1,
       },
     ],
-    labels: ['Product 1', 'Product 2', 'Product 3', ' Product 4'],
+    labels: ['Furniture', 'Outdoor', 'Kitchen', ' Stationary'],
   };
 
 export default function PieChart() {
   return (
-    <div className='max-h-[45vh] flex items-center justify-center hover:shadow-lg transition-all duration-300 border border-slate-200 rounded-lg'>
+    <div className='max-h-[70vh] flex items-center justify-center transition-all duration-300'>
       <Doughnut data={data} options={options} />
     </div>
   )
