@@ -1,34 +1,36 @@
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import { AiFillStar } from "react-icons/ai";
 import useNextBlurhash from "use-next-blurhash";
+
+import { ToastContainer, toast } from 'react-toastify'; 
 
 export default function ProductCard(props: any) {
   
   const [blurDataUrl] = useNextBlurhash("LEHV6nWB2yk8pyo0adR*.7kCMdnj");
-  
   const addToCart = async () =>{
     try {
-      const res = await fetch('/api/cart/userCart',{
+      const res = await fetch('/api/cart/add',{
         method:'POST',
         headers:{
           'Content-Type':'application/json',
         },
-        body:JSON.stringify({number:props.id})
+        body:JSON.stringify({productId:props.id})
       });
       const body = JSON.stringify(res);
       // console.log(body.length)
       if(!res.ok){
         throw new Error("Failed to add to cart");
+      } else{
+        toast('Product added to cart!',{
+          icon: "✅"
+        });
       }
-
-      alert("Added to cart");
+      // alert("Added to cart");
     }
     catch (error) {
       console.log(error);
     }
   }
+
   return (
     <div className="hover:cursor-pointer group flex flex-col min-h-[250px] md:min-w-[400px] mb-5">
       <div className=" bg-gray-100 rounded-xl p-10">

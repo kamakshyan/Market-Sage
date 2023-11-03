@@ -9,14 +9,14 @@ const poppins = Poppins({
 });
 
 export const getServerSideProps = async () => {
-    const res = await fetch("https://api.baserow.io/api/database/rows/table/213679/?user_field_names=true&filters=%7B%22filter_type%22%3A%22OR%22%2C%22filters%22%3A%5B%7B%22type%22%3A%22equal%22%2C%22field%22%3A%22super_class_id%22%2C%22value%22%3A%222%22%7D%2C%7B%22type%22%3A%22equal%22%2C%22field%22%3A%22super_class_id%22%2C%22value%22%3A%223%22%7D%2C%7B%22type%22%3A%22equal%22%2C%22field%22%3A%22super_class_id%22%2C%22value%22%3A%225%22%7D%2C%7B%22type%22%3A%22equal%22%2C%22field%22%3A%22super_class_id%22%2C%22value%22%3A%227%22%7D%2C%7B%22type%22%3A%22equal%22%2C%22field%22%3A%22super_class_id%22%2C%22value%22%3A%229%22%7D%2C%7B%22type%22%3A%22equal%22%2C%22field%22%3A%22super_class_id%22%2C%22value%22%3A%2211%22%7D%5D%2C%22groups%22%3A%5B%5D%7D", {
+    const res = await fetch("http://localhost:3000/api/productData/furniture", {
       method: "GET",
       headers: {
-        Authorization: `Token ${process.env.baserow_API_key}`
+        contentType: "application/json",
       },
     });
     const data = await res.json();
-    // console.log("Products: ", data.results);
+    // console.log("Products: ", data);
   
     return {
       props: { data: data },
@@ -24,7 +24,7 @@ export const getServerSideProps = async () => {
   };
 
 export default function furniture(props:any) {
-    // console.log(props.data)
+    console.log(props.data)
   return (
     <div className={`${poppins.className}`}>
       <Navbar />
@@ -32,11 +32,11 @@ export default function furniture(props:any) {
       <div className="pt-36">
         <p className="text-3xl font-bold text-center">Furniture Section</p>
         <p className="md:text-lg mt-2 text-center mx-4">Explore our handpicked collection of exquisite furniture pieces designed to transform your home into a haven of comfort and style.</p>
-        <p className="text-center mt-5 text-green-600">Total Products Fetched : {props.data.count}</p>
+        <p className="text-center mt-5 text-green-600">Total Products Fetched : {props.data.total}</p>
         <div className="mt-10">
         <div className="flex flex-col mx-10 gap-y-10 md:grid md:grid-cols-3 gap-x-16">
         {
-            props.data.results.map((product:any,index:number) =>{
+            props.data.data.slice(0,50).map((product:any,index:number) =>{
                 return (
                     <ProductCard
                     key={index}

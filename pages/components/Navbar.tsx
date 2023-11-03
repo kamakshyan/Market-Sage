@@ -1,4 +1,5 @@
 import { CiShoppingBasket, CiMenuFries } from "react-icons/ci";
+import {BsCamera} from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import { GoGraph } from "react-icons/go";
 import Link from "next/link";
@@ -28,6 +29,11 @@ export default function Navbar(props:any) {
   ];
 
   const icons = [
+    {
+      icon: <BsCamera />,
+      name: "Upload",
+      href: "/upload",
+    },
     {
       icon: <CiShoppingBasket />,
       name: "cart",
@@ -66,9 +72,9 @@ export default function Navbar(props:any) {
                       |
                     </span>
                   )}
-                  <Link key={index} href={link.href}>
+                  <span className="hover:cursor-not-allowed" key={index} >
                     {link.title}
-                  </Link>
+                  </span>
                 </div>
               </>
             );
@@ -85,7 +91,6 @@ export default function Navbar(props:any) {
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                  <span className="absolute text-red-600 bottom-10 text-[10px]">21</span>
                 </Link>
           {icons.map((icon: any, index: any) => {
             if(index > 0){

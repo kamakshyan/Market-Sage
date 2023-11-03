@@ -89,8 +89,8 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 4px;
+  height: 4px;
 }
 /* Track */
 ::-webkit-scrollbar-track {
@@ -101,4 +101,18 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background-color: #000;
+}
+
+
+.Toastify__toast-container--bottom-right {
+  margin-right: 10px;
+  margin-bottom: -10px;
+}
+
+.Toastify__progress-bar-theme--dark {
+  background: aliceblue !important;
+}
+
+.Toastify__toast{
+  border-radius: 0px !important;
 }

@@ -1,61 +1,148 @@
+import { GetServerSideProps, NextPage } from "next";
+import { useState } from "react";
+import axios from "axios";
+import fs from "fs/promises";
+import path from "path";
 import { Poppins } from "next/font/google";
 import Navbar from "./components/Navbar";
-import { useState } from "react";
+
+import { MdFileUpload } from "react-icons/md";
+
+interface Props {
+  dirs: string[];
+}
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "500", "600", "400", "700", "800", "900"],
 });
 
-export default function upload() {
+const Upload: NextPage<Props> = ({ dirs }) => {
+  const [uploading, setUploading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File>();
+  const [selectedModel, setSelectedModel] = useState("");
+  const [selectedMethod, setSelectedMethod] = useState("");
 
-  const models = ["Resnet 1", "Resnet 2", "Resnet 3"]
+  // console.log(selectedModel,selectedMethod)
 
-  const [selectedModel, setSelectedModel] = useState("ResNet 1");
+  const models = [
+    "Resnet-18",
+    "Resnet-34",
+    "Resnet-50",
+    "Resnet-101",
+    "Resnet-152",
+    "VGG-16",
+    "VGG-19",
+  ];
 
-  console.log("Selected Model: ", selectedModel);
+  const methods = ["Naive", "LSH"];
+
+  const handleUpload = async () => {
+    setUploading(true);
+    try {
+      if (!selectedFile) return;
+      const formData = new FormData();
+      formData.append("image", selectedFile);
+      formData.append("model", selectedModel);
+      formData.append("method", selectedMethod);
+      const { data } = await axios.post("/api/upload", formData);
+      // console.log(data);
+    } catch (error: any) {
+      console.log(error.response?.data);
+    }
+    setUploading(false);
+  };
+
   return (
     <div className={`${poppins.className}`}>
       <Navbar />
-      <div className="pt-32">
-        <p className="text-2xl font-bold text-center mb-10">Upload Product Image</p>
-        <label className="flex justify-center w-1/2 mx-auto h-32 px-4 transition bg-white border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
-          <span className="flex items-center space-x-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6 text-gray-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-              />
-            </svg>
-            <span className="font-medium text-gray-600">
-              Drop files to Attach, or {" "}
-              <span className="text-blue-600 underline">browse</span>
-            </span>
-          </span>
-          <input type="file" name="file_upload" className="hidden" />
+      <div className="pt-32 text-center">
+      <p className="text-xl md:text-2xl font-bold">Upload Image</p>
+        <p className="text-sm text-center mt-2">
+          Upload an image, find similar products instantly
+        </p>
+      </div>
+      <div className="flex flex-col md:flex-row md:justify-between items-center mt-10">
+        
+        <label className="md:mx-auto">
+          <input
+            accept="image/*"
+            type="file"
+            hidden
+            onChange={({ target }) => {
+              if (target.files) {
+                const file = target.files[0];
+                setSelectedImage(URL.createObjectURL(file));
+                setSelectedFile(file);
+              }
+            }}
+          />
+          <div className="w-[80vw] md:w-[40vw] aspect-video rounded flex items-center justify-center border-2 border-dashed border-black cursor-pointer">
+            {selectedImage ? (
+              <img src={selectedImage} alt="" />
+            ) : (
+              <span>Select Image</span>
+            )}
+          </div>
         </label>
-        <div className="flex gap-x-2 justify-center mt-5">
-        <p className="">Select AI Model to use :</p>
-        <select
-        defaultChecked
-        onChange={(e) => setSelectedModel(e.target.value)}
-        name="" id="">
-            {
-              models.map((model:any, index:any) => (
-                <option key={index} value={model}>{model}</option>
-              ))
-            }
-        </select>
+        <div className="flex flex-col gap-y-6 w-5/6 md:w-1/3 md:mx-auto">
+          <div className="flex flex-col gap-y-1">
+            <label className="">Select Model:</label>
+            <select
+              onChange={({ target }) => setSelectedModel(target.value)}
+              className="w-full px-2 py-3 border border-black"
+            >
+              <option value="none">Select Model</option>
+              {models.map((model, index) => {
+                return (
+                  <option key={index} value={model}>
+                    {model}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="flex flex-col w-full gap-y-1">
+            <label className="">Select Method:</label>
+            <select
+              onChange={({ target }) => setSelectedMethod(target.value)}
+              className="px-2 py-3 border border-black"
+            >
+              <option value="none">Select Method</option>
+              {methods.map((method, index) => {
+                return (
+                  <option key={index} value={method}>
+                    {method}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <button
+          onClick={handleUpload}
+          disabled={uploading}
+          style={{ opacity: uploading ? ".5" : "1" }}
+          className="rounded-3xl flex items-center hover:bg-white justify-center gap-x-1 text-white bg-black p-3 w-full border border-black text-center hover:text-black"
+        >
+          <MdFileUpload /> {uploading ? "Uploading.." : "Upload"}
+        </button>
         </div>
+
+        
       </div>
     </div>
   );
-}
+};
+export const getServerSideProps: GetServerSideProps = async () => {
+  const props = { dirs: [] };
+  try {
+    const dirs = await fs.readdir(path.join(process.cwd(), "/public/images"));
+    props.dirs = dirs as any;
+    return { props };
+  } catch (error) {
+    return { props };
+  }
+};
+
+export default Upload;
